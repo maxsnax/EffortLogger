@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+   <children>
+      <TableView fx:id="projectTable" layoutX="14.0" layoutY="70.0" prefHeight="420.0" prefWidth="313.0">
+        <columns>
+          <TableColumn fx:id="nameColumn" onEditCommit="#changeNameCellEvent" prefWidth="227.0" text="Project Name" />
+          <TableColumn fx:id="dateColumn" prefWidth="83.0" text="Created" />
+        </columns>
+      </TableView>
+      <TableView fx:id="logTable" layoutX="339.0" layoutY="70.0" prefHeight="420.0" prefWidth="313.0">
+         <columns>
+            <TableColumn fx:id="logNameColumn" onEditCommit="#changeLogNameCellEvent" prefWidth="227.0" text="Effort Log Name" />
+            <TableColumn fx:id="logDateColumn" prefWidth="83.0" text="Created" />
+         </columns>
+      </TableView>
+      <ListView layoutX="662.0" layoutY="70.0" prefHeight="420.0" prefWidth="313.0" />
+      <TextField fx:id="logDateField" alignment="CENTER" layoutX="677.0" layoutY="141.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" promptText="mm/dd/yyyy">
+         <font>
+            <Font size="11.0" />
+         </font></TextField>
+      <Label layoutX="678.0" layoutY="126.0" text="Date:" />
+      <TextField fx:id="logStartTime" alignment="CENTER" layoutX="677.0" layoutY="186.0" prefHeight="25.0" prefWidth="80.0" promptText="hrs:min:sec">
+         <font>
+            <Font size="11.0" />
+         </font></TextField>
+      <TextField fx:id="logFinishTime" layoutX="779.0" layoutY="186.0" prefHeight="25.0" prefWidth="80.0" promptText="hrs:min:sec" />
+      <TextField fx:id="logTotalTime" layoutX="880.0" layoutY="186.0" prefHeight="25.0" prefWidth="80.0" promptText="hrs:min:sec" />
+      <TextField fx:id="projectName" layoutX="14.0" layoutY="13.0" prefHeight="25.0" prefWidth="225.0" promptText="Input 40 characters or less" />
+      <Button layoutX="241.0" layoutY="12.0" mnemonicParsing="false" onAction="#addProjectButtonPushed" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #BDFFC4; -fx-background-radius: 100;" stylesheets="@buttonPress.css" text="Add Project">
+         <font>
+            <Font size="11.0" />
+         </font></Button>
+      <Button layoutX="241.0" layoutY="40.0" mnemonicParsing="false" onAction="#deleteProjectButtonPushed" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: FFABAB; -fx-background-radius: 100;" stylesheets="@buttonPress.css" text="Delete Project">
+         <font>
+            <Font size="11.0" />
+         </font></Button>
+      <Label layoutX="15.0" layoutY="39.0" text="Select a project and click delete to remove it">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="projectNameDisplay" contentDisplay="CENTER" layoutX="678.0" layoutY="71.0" prefHeight="25.0" prefWidth="282.0" text="Project Name">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="678.0" layoutY="224.0" text="Life Cycle Step" underline="true" />
+      <Label layoutX="678.0" layoutY="257.0" text="Effort Category" underline="true" />
+      <Label contentDisplay="CENTER" layoutX="678.0" layoutY="291.0" prefHeight="17.0" prefWidth="81.0" text="Effort Log Plan" underline="true" />
+      <Label layoutX="15.0" layoutY="51.0" prefHeight="15.0" prefWidth="257.0" text="or double click it to edit the name of the project">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="705.0" layoutY="168.0" text="Start" />
+      <Label layoutX="803.0" layoutY="168.0" text="Finish" />
+      <Label layoutX="889.0" layoutY="168.0" text="Total Time: " />
+      <ChoiceBox fx:id="logLifeCycleStepBox" layoutX="779.0" layoutY="220.0" prefHeight="25.0" prefWidth="181.0" />
+      <ChoiceBox id="logEffortCategory" fx:id="logEffortCategoryBox" layoutX="779.0" layoutY="254.0" prefHeight="25.0" prefWidth="181.0" />
+      <ChoiceBox id="logPlan" fx:id="logPlanBox" layoutX="778.0" layoutY="288.0" prefHeight="25.0" prefWidth="181.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="337.0" layoutY="-3.0" prefHeight="53.0" prefWidth="313.0" text="Project Manager" underline="true">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="780.0" layoutY="141.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="180.0" text="Record a new Effort Log" />
+      <Label fx:id="logNameDisplay" layoutX="678.0" layoutY="96.0" prefHeight="17.0" prefWidth="282.0" text="Select an Effort Log to view or edit it" />
+      <Label alignment="CENTER" layoutX="779.0" layoutY="126.0" prefHeight="13.0" prefWidth="181.0" text="Click to proceed to Effort Log Console">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Label>
+      <Button layoutX="871.0" layoutY="321.0" mnemonicParsing="false" onAction="#deleteLogButtonPushed" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: FFABAB; -fx-background-radius: 100;" stylesheets="@buttonPress.css" text="Delete Log">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
