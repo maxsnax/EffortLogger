@@ -1,7 +1,8 @@
 /*	Author: Max Schumacher, Group W31
+
  * 	File: Log.java
- * 	Purpose: Skeleton for a Log object, current has no implementation into Project objects
- * 	Last modication: 04/02/23
+ * 	Purpose: Used for tracking project progress. Tracks the name, creation date of the log,
+ * 		the start time, finish time, total time spent, life cycle, effort category, and plan.
  */
 
 package application;
@@ -16,28 +17,31 @@ import javafx.beans.property.SimpleStringProperty;
 public class Log {
 	
 	private SimpleStringProperty name;
-	private LocalDate date;
+	private LocalDate localDate;
+	private SimpleStringProperty date;
 	private LocalTime startTime;
 	private LocalTime finishTime;
-	private LocalTime totalTime;
 	private SimpleStringProperty lifeCycle = new SimpleStringProperty("");
 	private SimpleStringProperty effortCategory = new SimpleStringProperty("");
 	private SimpleStringProperty plan = new SimpleStringProperty("");
 	
-	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+	DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+	DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("hh:mm");
 	
     /*	=====================================================================================
 			Constructors
 		===================================================================================== */
 	
-	Log(String name, LocalDate date) {
+	Log(String name, LocalDate localDate) {
 		this.name = new SimpleStringProperty(name);
-		this.date = date;
+		this.localDate = localDate;
+		this.date = new SimpleStringProperty(localDate.format(dateFormat));
 	}
 	
-	Log (String name, LocalDate date, String lifeCycle, String effortCategory, String plan) {
+	Log (String name, LocalDate localDate, String lifeCycle, String effortCategory, String plan) {
 		this.name = new SimpleStringProperty(name);
-		this.date = date;
+		this.localDate = localDate;
+		this.date = new SimpleStringProperty(localDate.format(dateFormat));
 		this.lifeCycle = new SimpleStringProperty(lifeCycle);
 		this.effortCategory = new SimpleStringProperty(effortCategory);
 		this.plan = new SimpleStringProperty(plan);
@@ -56,36 +60,45 @@ public class Log {
 	}
 	
 	// Date
-	public LocalDate getDate() {
-		return date;
+	public LocalDate getLocalDate() {
+		return localDate;
 	}
 	
-	public void setDate(LocalDate date) {
-		this.date = date;
+	public void setLocalDate(LocalDate localDate) {
+		this.localDate = localDate;
+	}
+	
+	public void setDate(String date) {
+		this.date = new SimpleStringProperty(date);
+	}
+	
+	public String getDate() {
+		return date.get();
 	}
 	
 	// Time
-	public String getStartTime() {
-		if (startTime != null) return startTime.toString();
-		return "hrs:min:sec";
-	}
-
 	public void setStartTime(LocalTime time) {
 		this.startTime = time;
 	}
 	
-	public String getFinishTime() {
-		if (finishTime != null) return finishTime.toString();
-		return "hrs:min:sec";
+	public LocalTime getStartTime() {
+		return startTime;	
 	}
 
 	public void setFinishTime(LocalTime time) {
 		this.finishTime = time;
 	}
 	
+	public LocalTime getFinishTime() {
+		return finishTime;
+	}
+	
 	public String getTotalTime() {
-		if (startTime == null || finishTime == null) return "hrs:min:sec";
-		return Duration.between(startTime, finishTime).toString();
+		if (startTime == null || finishTime == null) return "";
+		Duration time = Duration.between(startTime, finishTime);
+		long hours = time.toHours();
+		long minutes = time.toHours() % 60;
+		return String.format("%02d:%02d", hours, minutes);
 	}
 
 	// Life Cycle

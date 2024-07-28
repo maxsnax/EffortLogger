@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -14,37 +15,40 @@
    <children>
       <TableView fx:id="projectTable" layoutX="14.0" layoutY="70.0" prefHeight="420.0" prefWidth="313.0">
         <columns>
-          <TableColumn fx:id="nameColumn" onEditCommit="#changeNameCellEvent" prefWidth="227.0" text="Project Name" />
+          <TableColumn fx:id="nameColumn" prefWidth="227.0" text="Project Name" />
           <TableColumn fx:id="dateColumn" prefWidth="83.0" text="Created" />
         </columns>
       </TableView>
       <TableView fx:id="logTable" layoutX="339.0" layoutY="70.0" prefHeight="420.0" prefWidth="313.0">
          <columns>
-            <TableColumn fx:id="logNameColumn" onEditCommit="#changeLogNameCellEvent" prefWidth="227.0" text="Effort Log Name" />
+            <TableColumn fx:id="logNameColumn" prefWidth="227.0" text="Effort Log Name" />
             <TableColumn fx:id="logDateColumn" prefWidth="83.0" text="Created" />
          </columns>
       </TableView>
       <ListView layoutX="662.0" layoutY="70.0" prefHeight="420.0" prefWidth="313.0" />
       <TextField fx:id="logDateField" alignment="CENTER" layoutX="677.0" layoutY="141.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" promptText="mm/dd/yyyy">
-         <font>
-            <Font size="11.0" />
-         </font></TextField>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
       <Label layoutX="678.0" layoutY="126.0" text="Date:" />
-      <TextField fx:id="logStartTime" alignment="CENTER" layoutX="677.0" layoutY="186.0" prefHeight="25.0" prefWidth="80.0" promptText="hrs:min:sec">
-         <font>
-            <Font size="11.0" />
-         </font></TextField>
-      <TextField fx:id="logFinishTime" layoutX="779.0" layoutY="186.0" prefHeight="25.0" prefWidth="80.0" promptText="hrs:min:sec" />
-      <TextField fx:id="logTotalTime" layoutX="880.0" layoutY="186.0" prefHeight="25.0" prefWidth="80.0" promptText="hrs:min:sec" />
+      <TextField fx:id="logStartTime" alignment="CENTER" layoutX="677.0" layoutY="186.0" prefHeight="25.0" prefWidth="80.0" promptText="hh:mm" />
+      <TextField fx:id="logFinishTime" alignment="CENTER" layoutX="779.0" layoutY="186.0" prefHeight="25.0" prefWidth="80.0" promptText="hh:mm" />
+      <TextField fx:id="logTotalTime" alignment="CENTER" layoutX="880.0" layoutY="186.0" prefHeight="25.0" prefWidth="80.0" promptText="hh:mm" />
       <TextField fx:id="projectName" layoutX="14.0" layoutY="13.0" prefHeight="25.0" prefWidth="225.0" promptText="Input 40 characters or less" />
       <Button layoutX="241.0" layoutY="12.0" mnemonicParsing="false" onAction="#addProjectButtonPushed" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #BDFFC4; -fx-background-radius: 100;" stylesheets="@buttonPress.css" text="Add Project">
          <font>
             <Font size="11.0" />
-         </font></Button>
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Button layoutX="241.0" layoutY="40.0" mnemonicParsing="false" onAction="#deleteProjectButtonPushed" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: FFABAB; -fx-background-radius: 100;" stylesheets="@buttonPress.css" text="Delete Project">
          <font>
             <Font size="11.0" />
-         </font></Button>
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Label layoutX="15.0" layoutY="39.0" text="Select a project and click delete to remove it">
          <font>
             <Font size="10.0" />
@@ -74,7 +78,10 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="780.0" layoutY="141.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="180.0" text="Record a new Effort Log" />
+      <Button layoutX="780.0" layoutY="141.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="180.0" text="Record a new Effort Log">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Label fx:id="logNameDisplay" layoutX="678.0" layoutY="96.0" prefHeight="17.0" prefWidth="282.0" text="Select an Effort Log to view or edit it" />
       <Label alignment="CENTER" layoutX="779.0" layoutY="126.0" prefHeight="13.0" prefWidth="181.0" text="Click to proceed to Effort Log Console">
          <font>
@@ -85,6 +92,9 @@
          <font>
             <Font size="11.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
    </children>
 </AnchorPane>
